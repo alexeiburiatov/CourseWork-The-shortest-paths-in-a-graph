@@ -16,7 +16,20 @@ System::Void MyProject::DataForm::ñãåíåðèðîâàòüToolStripMenuItem_Click(System::O
 
 System::Void MyProject::DataForm::ââåñòèÂðó÷íóþToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
+	dataGridView1->ReadOnly = false;
+
+	dataGridView1->Rows->Clear();
+	dataGridView1->Columns->Clear();
+	procession.tops = Convert::ToInt32(num_of_tops->Value);
+	dataGridView1->RowCount = procession.tops;
+	dataGridView1->ColumnCount = procession.tops;
+
+	Head();
+
+	dataGridView1->AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode::AutoSizeToAllHeaders);
+	dataGridView1->AutoResizeColumns();
 	return System::Void();
+
 }
 
 System::Void MyProject::DataForm::âûâîäÄàííûõToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
@@ -27,7 +40,7 @@ System::Void MyProject::DataForm::âûâîäÄàííûõToolStripMenuItem_Click(System::Obj
 	}
 
 	dataGridView1->Rows->Clear();
-	dataGridView1->Rows->Clear();
+	dataGridView1->Columns->Clear();
 
 	dataGridView1->RowCount = procession.tops;
 	dataGridView1->ColumnCount = procession.tops;
@@ -35,13 +48,14 @@ System::Void MyProject::DataForm::âûâîäÄàííûõToolStripMenuItem_Click(System::Obj
 	Show();
 	dataGridView1->AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode::AutoSizeToAllHeaders);
 	dataGridView1->AutoResizeColumns();
-
+	dataGridView1->ReadOnly=true;
 	
 	return System::Void();
 }
 
 System::Void MyProject::DataForm::ñîõðàíèòüÂÏðîãðàììóToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
+
 	return System::Void();
 }
 
@@ -98,7 +112,7 @@ System::Void MyProject::DataForm::DataForm_Shown(System::Object^ sender, System:
 
 void MyProject::DataForm::Show()
 {
-	//dataGridView1->TopLeftHeaderCell->Value = "¹";
+
 	
 	string inf = "INF";
 	for (int i = 0; i < dataGridView1->RowCount; i++)
@@ -116,7 +130,49 @@ void MyProject::DataForm::Show()
 	}
 }
 
+void MyProject::DataForm::Head()
+{
+
+	string inf = "INF";
+	for (int i = 0; i < dataGridView1->RowCount; i++)
+	{
+		dataGridView1->Rows[i]->HeaderCell->Value = Convert::ToString(i + 1);
+		dataGridView1->Columns[i]->HeaderCell->Value = Convert::ToString(i + 1);
+		for (int j = 0; j < dataGridView1->ColumnCount; j++)
+		{
+				dataGridView1->Rows[i]->Cells[j]->Value = Convert_string_to_String(inf);
+		}
+	}
+
+
+}
+
 System::Void MyProject::DataForm::dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
+{
+	return System::Void();
+}
+
+System::Void MyProject::DataForm::num_of_tops_ValueChanged(System::Object^ sender, System::EventArgs^ e)
+{
+	return System::Void();
+}
+
+System::Void MyProject::DataForm::pathFrom_TextChanged(System::Object^ sender, System::EventArgs^ e)
+{
+	return System::Void();
+}
+
+System::Void MyProject::DataForm::pathTo_TextChanged(System::Object^ sender, System::EventArgs^ e)
+{
+	return System::Void();
+}
+
+System::Void MyProject::DataForm::AlgorithmFloida_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	return System::Void();
+}
+
+System::Void MyProject::DataForm::AlgorithmDantzig_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	return System::Void();
 }

@@ -55,6 +55,25 @@ namespace MyProject {
 	private: System::Windows::Forms::ToolStripMenuItem^ ‚˚ÈÚË»ÁœÓ„‡ÏÏ˚ToolStripMenuItem;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::ToolStripMenuItem^ Ò˜ËÚ‡Ú¸—‘‡ÈÎ‡ToolStripMenuItem;
+	private: System::Windows::Forms::GroupBox^ groupBox1;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::ComponentModel::BackgroundWorker^ backgroundWorker1;
+	private: System::Windows::Forms::NumericUpDown^ num_of_tops;
+
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::TextBox^ pathTo;
+
+	private: System::Windows::Forms::TextBox^ pathFrom;
+	private: System::Windows::Forms::Button^ AlgorithmFloida;
+	private: System::Windows::Forms::Button^ AlgorithmDantzig;
+
+
+
+
+	private: System::Windows::Forms::ToolStripMenuItem^ ‚ËÁÛ‡ÎËÁËÓ‚‡Ú¸ToolStripMenuItem;
+	private: System::Windows::Forms::Label^ label5;
+
 	private: System::ComponentModel::IContainer^ components;
 
 	private:
@@ -71,9 +90,9 @@ namespace MyProject {
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle22 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle23 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle24 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->‰ÂÈÒÚ‚ËÂToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->‚‚Ó‰ƒ‡ÌÌ˚ı¬Û˜ÌÛ˛ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -92,8 +111,22 @@ namespace MyProject {
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->num_of_tops = (gcnew System::Windows::Forms::NumericUpDown());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->pathFrom = (gcnew System::Windows::Forms::TextBox());
+			this->pathTo = (gcnew System::Windows::Forms::TextBox());
+			this->AlgorithmFloida = (gcnew System::Windows::Forms::Button());
+			this->AlgorithmDantzig = (gcnew System::Windows::Forms::Button());
+			this->‚ËÁÛ‡ÎËÁËÓ‚‡Ú¸ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			this->groupBox1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->num_of_tops))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -127,34 +160,35 @@ namespace MyProject {
 					this->‚‚ÂÒÚË¬Û˜ÌÛ˛ToolStripMenuItem, this->Ò˜ËÚ‡Ú¸—‘‡ÈÎ‡ToolStripMenuItem
 			});
 			this->‚‚Ó‰ƒ‡ÌÌ˚ı¬Û˜ÌÛ˛ToolStripMenuItem->Name = L"‚‚Ó‰ƒ‡ÌÌ˚ı¬Û˜ÌÛ˛ToolStripMenuItem";
-			this->‚‚Ó‰ƒ‡ÌÌ˚ı¬Û˜ÌÛ˛ToolStripMenuItem->Size = System::Drawing::Size(177, 22);
+			this->‚‚Ó‰ƒ‡ÌÌ˚ı¬Û˜ÌÛ˛ToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->‚‚Ó‰ƒ‡ÌÌ˚ı¬Û˜ÌÛ˛ToolStripMenuItem->Text = L"¬‚Ó‰ ‰‡ÌÌ˚ı";
 			// 
 			// Ò„ÂÌÂËÓ‚‡Ú¸ToolStripMenuItem
 			// 
 			this->Ò„ÂÌÂËÓ‚‡Ú¸ToolStripMenuItem->Name = L"Ò„ÂÌÂËÓ‚‡Ú¸ToolStripMenuItem";
-			this->Ò„ÂÌÂËÓ‚‡Ú¸ToolStripMenuItem->Size = System::Drawing::Size(165, 22);
+			this->Ò„ÂÌÂËÓ‚‡Ú¸ToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->Ò„ÂÌÂËÓ‚‡Ú¸ToolStripMenuItem->Text = L"—„ÂÌÂËÓ‚‡Ú¸";
 			this->Ò„ÂÌÂËÓ‚‡Ú¸ToolStripMenuItem->Click += gcnew System::EventHandler(this, &DataForm::Ò„ÂÌÂËÓ‚‡Ú¸ToolStripMenuItem_Click);
 			// 
 			// ‚‚ÂÒÚË¬Û˜ÌÛ˛ToolStripMenuItem
 			// 
 			this->‚‚ÂÒÚË¬Û˜ÌÛ˛ToolStripMenuItem->Name = L"‚‚ÂÒÚË¬Û˜ÌÛ˛ToolStripMenuItem";
-			this->‚‚ÂÒÚË¬Û˜ÌÛ˛ToolStripMenuItem->Size = System::Drawing::Size(165, 22);
+			this->‚‚ÂÒÚË¬Û˜ÌÛ˛ToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->‚‚ÂÒÚË¬Û˜ÌÛ˛ToolStripMenuItem->Text = L"¬‚ÂÒÚË ‚Û˜ÌÛ˛";
 			this->‚‚ÂÒÚË¬Û˜ÌÛ˛ToolStripMenuItem->Click += gcnew System::EventHandler(this, &DataForm::‚‚ÂÒÚË¬Û˜ÌÛ˛ToolStripMenuItem_Click);
 			// 
 			// Ò˜ËÚ‡Ú¸—‘‡ÈÎ‡ToolStripMenuItem
 			// 
 			this->Ò˜ËÚ‡Ú¸—‘‡ÈÎ‡ToolStripMenuItem->Name = L"Ò˜ËÚ‡Ú¸—‘‡ÈÎ‡ToolStripMenuItem";
-			this->Ò˜ËÚ‡Ú¸—‘‡ÈÎ‡ToolStripMenuItem->Size = System::Drawing::Size(165, 22);
+			this->Ò˜ËÚ‡Ú¸—‘‡ÈÎ‡ToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->Ò˜ËÚ‡Ú¸—‘‡ÈÎ‡ToolStripMenuItem->Text = L"—˜ËÚ‡Ú¸ Ò Ù‡ÈÎ‡";
 			this->Ò˜ËÚ‡Ú¸—‘‡ÈÎ‡ToolStripMenuItem->Click += gcnew System::EventHandler(this, &DataForm::Ò˜ËÚ‡Ú¸—‘‡ÈÎ‡ToolStripMenuItem_Click);
 			// 
 			// ‚˚‚Ó‰ƒ‡ÌÌ˚ıToolStripMenuItem
 			// 
+			this->‚˚‚Ó‰ƒ‡ÌÌ˚ıToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->‚ËÁÛ‡ÎËÁËÓ‚‡Ú¸ToolStripMenuItem });
 			this->‚˚‚Ó‰ƒ‡ÌÌ˚ıToolStripMenuItem->Name = L"‚˚‚Ó‰ƒ‡ÌÌ˚ıToolStripMenuItem";
-			this->‚˚‚Ó‰ƒ‡ÌÌ˚ıToolStripMenuItem->Size = System::Drawing::Size(177, 22);
+			this->‚˚‚Ó‰ƒ‡ÌÌ˚ıToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->‚˚‚Ó‰ƒ‡ÌÌ˚ıToolStripMenuItem->Text = L"¬˚‚Ó‰ ‰‡ÌÌ˚ı";
 			this->‚˚‚Ó‰ƒ‡ÌÌ˚ıToolStripMenuItem->Click += gcnew System::EventHandler(this, &DataForm::‚˚‚Ó‰ƒ‡ÌÌ˚ıToolStripMenuItem_Click);
 			// 
@@ -165,7 +199,7 @@ namespace MyProject {
 					this->ÒÓı‡ÌËÚ¸¬‘‡ÈÎToolStripMenuItem
 			});
 			this->ÒÓı‡ÌÂÌËÂƒ‡ÌÌ˚ıToolStripMenuItem->Name = L"ÒÓı‡ÌÂÌËÂƒ‡ÌÌ˚ıToolStripMenuItem";
-			this->ÒÓı‡ÌÂÌËÂƒ‡ÌÌ˚ıToolStripMenuItem->Size = System::Drawing::Size(177, 22);
+			this->ÒÓı‡ÌÂÌËÂƒ‡ÌÌ˚ıToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->ÒÓı‡ÌÂÌËÂƒ‡ÌÌ˚ıToolStripMenuItem->Text = L"—Óı‡ÌËÚ¸ ‰‡ÌÌ˚Â";
 			this->ÒÓı‡ÌÂÌËÂƒ‡ÌÌ˚ıToolStripMenuItem->Click += gcnew System::EventHandler(this, &DataForm::ÒÓı‡ÌÂÌËÂƒ‡ÌÌ˚ıToolStripMenuItem_Click);
 			// 
@@ -186,7 +220,7 @@ namespace MyProject {
 			// Û‰‡ÎËÚ¸ƒ‡ÌÌ˚ÂToolStripMenuItem
 			// 
 			this->Û‰‡ÎËÚ¸ƒ‡ÌÌ˚ÂToolStripMenuItem->Name = L"Û‰‡ÎËÚ¸ƒ‡ÌÌ˚ÂToolStripMenuItem";
-			this->Û‰‡ÎËÚ¸ƒ‡ÌÌ˚ÂToolStripMenuItem->Size = System::Drawing::Size(177, 22);
+			this->Û‰‡ÎËÚ¸ƒ‡ÌÌ˚ÂToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->Û‰‡ÎËÚ¸ƒ‡ÌÌ˚ÂToolStripMenuItem->Text = L"”‰‡ÎËÚ¸ ‰‡ÌÌ˚Â";
 			this->Û‰‡ÎËÚ¸ƒ‡ÌÌ˚ÂToolStripMenuItem->Click += gcnew System::EventHandler(this, &DataForm::Û‰‡ÎËÚ¸ƒ‡ÌÌ˚ÂToolStripMenuItem_Click);
 			// 
@@ -230,61 +264,182 @@ namespace MyProject {
 			// dataGridView1
 			// 
 			this->dataGridView1->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
-			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Courier New", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle22->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle22->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle22->Font = (gcnew System::Drawing::Font(L"Courier New", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle22->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle22->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle22->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle22->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle23->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle23->BackColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle23->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::ControlText;
-			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			this->dataGridView1->DefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle23->ForeColor = System::Drawing::SystemColors::ControlText;
+			dataGridViewCellStyle23->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle23->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle23->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->dataGridView1->DefaultCellStyle = dataGridViewCellStyle23;
 			this->dataGridView1->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->dataGridView1->Location = System::Drawing::Point(0, 77);
+			this->dataGridView1->Location = System::Drawing::Point(0, 137);
 			this->dataGridView1->Margin = System::Windows::Forms::Padding(2);
 			this->dataGridView1->Name = L"dataGridView1";
-			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Courier New", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle24->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle24->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle24->Font = (gcnew System::Drawing::Font(L"Courier New", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dataGridView1->RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle24->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle24->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle24->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle24->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dataGridView1->RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(760, 372);
+			this->dataGridView1->Size = System::Drawing::Size(760, 312);
 			this->dataGridView1->TabIndex = 3;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &DataForm::dataGridView1_CellContentClick);
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Courier New", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Courier New", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(274, 23);
+			this->label1->Location = System::Drawing::Point(360, 55);
 			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(129, 36);
 			this->label1->TabIndex = 4;
 			this->label1->Text = L"ƒ‡ÌÌ˚Â";
 			// 
+			// groupBox1
+			// 
+			this->groupBox1->Controls->Add(this->label5);
+			this->groupBox1->Controls->Add(this->pathTo);
+			this->groupBox1->Controls->Add(this->pathFrom);
+			this->groupBox1->Controls->Add(this->label4);
+			this->groupBox1->Controls->Add(this->label3);
+			this->groupBox1->Controls->Add(this->num_of_tops);
+			this->groupBox1->Controls->Add(this->label2);
+			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Courier New", 8));
+			this->groupBox1->Location = System::Drawing::Point(3, 27);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(290, 105);
+			this->groupBox1->TabIndex = 5;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"œ‡‡ÏÂÚ˚ ‰Îˇ ‚‚Ó‰‡ ‰‡ÌÌ˚ı";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Courier New", 14));
+			this->label2->Location = System::Drawing::Point(6, 28);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(197, 21);
+			this->label2->TabIndex = 0;
+			this->label2->Text = L" ÓÎË˜ÂÒÚ‚Ó ‚Â¯ËÌ";
+			// 
+			// num_of_tops
+			// 
+			this->num_of_tops->Font = (gcnew System::Drawing::Font(L"Courier New", 10));
+			this->num_of_tops->Location = System::Drawing::Point(209, 28);
+			this->num_of_tops->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 20, 0, 0, 0 });
+			this->num_of_tops->Name = L"num_of_tops";
+			this->num_of_tops->Size = System::Drawing::Size(75, 23);
+			this->num_of_tops->TabIndex = 1;
+			this->num_of_tops->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2, 0, 0, 0 });
+			this->num_of_tops->ValueChanged += gcnew System::EventHandler(this, &DataForm::num_of_tops_ValueChanged);
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Courier New", 14));
+			this->label3->Location = System::Drawing::Point(9, 80);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(87, 21);
+			this->label3->TabIndex = 2;
+			this->label3->Text = L"œÛÚ¸ ÓÚ";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Courier New", 14));
+			this->label4->Location = System::Drawing::Point(138, 81);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(21, 21);
+			this->label4->TabIndex = 3;
+			this->label4->Text = L"Í";
+			// 
+			// pathFrom
+			// 
+			this->pathFrom->Font = (gcnew System::Drawing::Font(L"Courier New", 8));
+			this->pathFrom->Location = System::Drawing::Point(101, 81);
+			this->pathFrom->Margin = System::Windows::Forms::Padding(2);
+			this->pathFrom->Name = L"pathFrom";
+			this->pathFrom->Size = System::Drawing::Size(32, 20);
+			this->pathFrom->TabIndex = 5;
+			this->pathFrom->TextChanged += gcnew System::EventHandler(this, &DataForm::pathFrom_TextChanged);
+			// 
+			// pathTo
+			// 
+			this->pathTo->Font = (gcnew System::Drawing::Font(L"Courier New", 8));
+			this->pathTo->Location = System::Drawing::Point(164, 80);
+			this->pathTo->Margin = System::Windows::Forms::Padding(2);
+			this->pathTo->Name = L"pathTo";
+			this->pathTo->Size = System::Drawing::Size(32, 20);
+			this->pathTo->TabIndex = 6;
+			this->pathTo->TextChanged += gcnew System::EventHandler(this, &DataForm::pathTo_TextChanged);
+			// 
+			// AlgorithmFloida
+			// 
+			this->AlgorithmFloida->Font = (gcnew System::Drawing::Font(L"Courier New", 12));
+			this->AlgorithmFloida->Location = System::Drawing::Point(596, 31);
+			this->AlgorithmFloida->Margin = System::Windows::Forms::Padding(2);
+			this->AlgorithmFloida->Name = L"AlgorithmFloida";
+			this->AlgorithmFloida->Size = System::Drawing::Size(153, 49);
+			this->AlgorithmFloida->TabIndex = 6;
+			this->AlgorithmFloida->Text = L"ÃÂÚÓ‰ ‘ÎÓÈ‰‡";
+			this->AlgorithmFloida->UseVisualStyleBackColor = true;
+			this->AlgorithmFloida->Click += gcnew System::EventHandler(this, &DataForm::AlgorithmFloida_Click);
+			// 
+			// AlgorithmDantzig
+			// 
+			this->AlgorithmDantzig->Font = (gcnew System::Drawing::Font(L"Courier New", 12));
+			this->AlgorithmDantzig->Location = System::Drawing::Point(596, 84);
+			this->AlgorithmDantzig->Margin = System::Windows::Forms::Padding(2);
+			this->AlgorithmDantzig->Name = L"AlgorithmDantzig";
+			this->AlgorithmDantzig->Size = System::Drawing::Size(153, 49);
+			this->AlgorithmDantzig->TabIndex = 7;
+			this->AlgorithmDantzig->Text = L"ÃÂÚÓ‰ ƒ‡ÌˆË„‡";
+			this->AlgorithmDantzig->UseVisualStyleBackColor = true;
+			this->AlgorithmDantzig->Click += gcnew System::EventHandler(this, &DataForm::AlgorithmDantzig_Click);
+			// 
+			// ‚ËÁÛ‡ÎËÁËÓ‚‡Ú¸ToolStripMenuItem
+			// 
+			this->‚ËÁÛ‡ÎËÁËÓ‚‡Ú¸ToolStripMenuItem->Name = L"‚ËÁÛ‡ÎËÁËÓ‚‡Ú¸ToolStripMenuItem";
+			this->‚ËÁÛ‡ÎËÁËÓ‚‡Ú¸ToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->‚ËÁÛ‡ÎËÁËÓ‚‡Ú¸ToolStripMenuItem->Text = L"¬ËÁÛ‡ÎËÁËÓ‚‡Ú¸";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Courier New", 14));
+			this->label5->Location = System::Drawing::Point(197, 80);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(87, 21);
+			this->label5->TabIndex = 7;
+			this->label5->Text = L"‚Â¯ËÌÂ";
+			// 
 			// DataForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(760, 448);
+			this->Controls->Add(this->AlgorithmDantzig);
+			this->Controls->Add(this->AlgorithmFloida);
+			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->menuStrip1);
@@ -299,6 +454,9 @@ namespace MyProject {
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			this->groupBox1->ResumeLayout(false);
+			this->groupBox1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->num_of_tops))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -319,6 +477,12 @@ private: System::Void DataForm_Load(System::Object^ sender, System::EventArgs^ e
 private: System::Void Ò˜ËÚ‡Ú¸—‘‡ÈÎ‡ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void DataForm_Shown(System::Object^ sender, System::EventArgs^ e);
 private: void Show();
+private: void Head();
 private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+private: System::Void num_of_tops_ValueChanged(System::Object^ sender, System::EventArgs^ e);
+private: System::Void pathFrom_TextChanged(System::Object^ sender, System::EventArgs^ e);
+private: System::Void pathTo_TextChanged(System::Object^ sender, System::EventArgs^ e);
+private: System::Void AlgorithmFloida_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void AlgorithmDantzig_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }
