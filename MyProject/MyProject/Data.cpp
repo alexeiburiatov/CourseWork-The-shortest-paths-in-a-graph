@@ -163,7 +163,7 @@ bool Data_::is_INF(int row, int column)
 
 Data_::~Data_()
 {
-	for (int i = 0; i < tops; i++)
+	for (int i = 0; i < this->tops; i++)
 	{
 		delete this->Adjacency_Array[i];
 	}

@@ -16,13 +16,18 @@ System::Void MyProject::DataForm::ñãåíåğèğîâàòüToolStripMenuItem_Click(System::O
 
 System::Void MyProject::DataForm::ââåñòèÂğó÷íóşToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
+	procession.~Data_();
 	dataGridView1->ReadOnly = false;
 
 	dataGridView1->Rows->Clear();
 	dataGridView1->Columns->Clear();
 	procession.tops = Convert::ToInt32(num_of_tops->Value);
+	procession.ribs = 0;
+
+	
 	dataGridView1->RowCount = procession.tops;
 	dataGridView1->ColumnCount = procession.tops;
+	procession.Create_Arrays();
 
 	Head();
 
@@ -42,8 +47,10 @@ System::Void MyProject::DataForm::âûâîäÄàííûõToolStripMenuItem_Click(System::Obj
 	dataGridView1->Rows->Clear();
 	dataGridView1->Columns->Clear();
 
+
 	dataGridView1->RowCount = procession.tops;
 	dataGridView1->ColumnCount = procession.tops;
+	
 	
 	Show();
 	dataGridView1->AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode::AutoSizeToAllHeaders);
@@ -55,12 +62,44 @@ System::Void MyProject::DataForm::âûâîäÄàííûõToolStripMenuItem_Click(System::Obj
 
 System::Void MyProject::DataForm::ñîõğàíèòüÂÏğîãğàììóToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
+	procession.ribs = 0;
+	string inf = "INF";
+	String^ inputed_INF = Convert_string_to_String(inf);
 
+
+	for (int i = 0; i < procession.tops; i++)
+	{
+
+		for (int j = 0; j < procession.tops; j++)
+		{
+
+			if (dataGridView1->Rows[i]->Cells[j]->Value->ToString() == inputed_INF)
+			{
+				procession.Adjacency_Array[i][j] = INF;
+			}
+			else
+			{
+				if (i != j)
+				{
+					procession.ribs++;
+					procession.Adjacency_Array[i][j] = Convert::ToInt32(dataGridView1->Rows[i]->Cells[j]->Value);
+				}
+				else
+				{
+					procession.Adjacency_Array[i][j]=0;
+				}
+			}
+
+		}
+	}
+	procession.Set_Data_To_File("reserved.txt");
 	return System::Void();
 }
 
 System::Void MyProject::DataForm::ñîõğàíèòüÂÔàéëToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
+	OutputData^ form = gcnew OutputData();
+	form->Show();
 	return System::Void();
 }
 
@@ -140,10 +179,16 @@ void MyProject::DataForm::Head()
 		dataGridView1->Columns[i]->HeaderCell->Value = Convert::ToString(i + 1);
 		for (int j = 0; j < dataGridView1->ColumnCount; j++)
 		{
+			if (i == j)
+			{
+				dataGridView1->Rows[i]->Cells[j]->Value = 0;
+			}
+			else
+			{
 				dataGridView1->Rows[i]->Cells[j]->Value = Convert_string_to_String(inf);
+			}
 		}
 	}
-
 
 }
 

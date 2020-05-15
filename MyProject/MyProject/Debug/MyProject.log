@@ -1,3 +1,4 @@
 ﻿  DataForm.cpp
+D:\Studying\C++\II semester\Курсовая\Interface\MyProject\MyProject\DataForm.cpp(184,48): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
   Data.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
   MyProject.vcxproj -> D:\Studying\C++\II semester\Курсовая\Interface\MyProject\Debug\MyProject.exe
