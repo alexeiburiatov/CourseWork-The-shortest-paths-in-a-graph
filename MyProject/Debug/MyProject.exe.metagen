@@ -1,4 +1,5 @@
   MyProject.DataForm.resources - Embedded, ContainedInManifestFile, 
+  MyProject.Graph.resources - Embedded, ContainedInManifestFile, 
   MyProject.InputData.resources - Embedded, ContainedInManifestFile, 
   MyProject.MyForm.resources - Embedded, ContainedInManifestFile, 
   MyProject.OutputData.resources - Embedded, ContainedInManifestFile, 
@@ -27,5 +28,8 @@ Class MyProject.InputData: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class MyProject.OutputData: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class MyProject.Graph: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

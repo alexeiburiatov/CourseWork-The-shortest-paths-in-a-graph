@@ -3,6 +3,7 @@
 #include "DataForm.h"
 #include "InputData.h"
 #include "OutputData.h"
+#include"Graph.h"
 #include <iostream>
 
 using namespace System::Drawing;
@@ -219,5 +220,13 @@ System::Void MyProject::DataForm::AlgorithmFloida_Click(System::Object^ sender, 
 
 System::Void MyProject::DataForm::AlgorithmDantzig_Click(System::Object^ sender, System::EventArgs^ e)
 {
+	return System::Void();
+}
+
+System::Void MyProject::DataForm::ShowGraph_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	Graph^ form = gcnew Graph();
+	//this->Hide();
+	form->Show();
 	return System::Void();
 }

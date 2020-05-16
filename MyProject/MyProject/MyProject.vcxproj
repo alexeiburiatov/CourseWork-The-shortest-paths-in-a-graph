@@ -123,6 +123,7 @@
     <ClCompile Include="Data.cpp" />
     <ClCompile Include="DataForm.cpp" />
     <ClCompile Include="Functions.cpp" />
+    <ClCompile Include="Graph.cpp" />
     <ClCompile Include="InputData.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="OutputData.cpp" />
@@ -133,6 +134,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Functions.h" />
+    <ClInclude Include="Graph.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="InputData.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -146,6 +150,9 @@
   <ItemGroup>
     <EmbeddedResource Include="DataForm.resx">
       <DependentUpon>DataForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graph.resx">
+      <DependentUpon>Graph.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InputData.resx">
       <DependentUpon>InputData.h</DependentUpon>
