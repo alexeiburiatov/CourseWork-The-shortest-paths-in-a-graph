@@ -16,6 +16,7 @@ System::Void MyProject::OutputData::вернутьсяВГлавноеМенюToolStripMenuItem_Click
 System::Void MyProject::OutputData::выйтиИзПрограммыToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	ClearFile("reserved.txt");
+	remove("Important/picture.png");
 	Application::Exit();
 }
 
@@ -43,7 +44,7 @@ System::Void MyProject::OutputData::button1_Click(System::Object^ sender, System
 	}
 	else
 	{
-		MessageBox::Show("Данные не считаны. Проверьте корректность названия файла", "Внимание!");
+		MessageBox::Show("Данные не считаны. Проверьте даные", "Внимание!");
 		return;
 	}
 
@@ -52,4 +53,49 @@ System::Void MyProject::OutputData::button1_Click(System::Object^ sender, System
 System::Void MyProject::OutputData::textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e)//поле для сохранения
 {
 	
+}
+
+System::Void MyProject::OutputData::buttonSavePath_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	if (textBoxSavePath->Text == "")
+	{
+		MessageBox::Show("Введите название файла!", "Внимание!");
+		return;
+	}
+
+	ifstream File("Important/reserved_for_path.txt");
+	if (!File.is_open())
+	{
+		MessageBox::Show("Путь не найден!", "Внимание!");
+		return;
+	}
+	else
+	{
+		string filename;
+		Convert_String_to_string(textBoxSavePath->Text->ToString(), filename);
+		ofstream File(filename);
+		if (File.is_open()) {
+			File.close();
+			Data_ temp;
+			temp.Set_Path_To_File(filename);
+			MessageBox::Show("Данные сохранены!", "Внимание!");
+			return;
+		}
+		else
+		{
+			MessageBox::Show("Данные не считаны. Проверьте корректность названия файла", "Внимание!");
+			return;
+		}
+
+	}
+
+
+
+
+	return System::Void();
+}
+
+System::Void MyProject::OutputData::textBoxSavePath_TextChanged(System::Object^ sender, System::EventArgs^ e)
+{
+	return System::Void();
 }

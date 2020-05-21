@@ -22,29 +22,38 @@ public:
 	//num- кількість вершин
 	void Set_Data_Array_From_File(string File_Name);//зчитування з файлу користувача
 	void Set_Data_Adjacency_Array_From_File(string File_Name);
-	void Set_Data_Array_By_Inputing(int num);//власні дані користувача
 	void Set_Data_Array_By_Generating(int num);//генерування даних
 	void Set_Data_To_File(string File_Name);
-
+	void Set_Path_To_File(string File_Name);
+	void Show_Graph();
+	void Show_Path();
 	void Get_The_Shortest_Path_Floida();
 	void Get_The_Shortest_Path_Dantzig();
-
-	int tops=0;
-	int ribs=0;
-	double** Adjacency_Array;
 	bool is_INF(int row, int column);
+	void Set_Top_From(int from);
+	void Set_Top_To(int to);
+	double** Adjacency_Array;
+	int tops = NULL;
+	int ribs = NULL;
+
+	vector<int>& path;
 
 private:
+	
+	int from = NULL;
+	int to = NULL;
+	void SetPathToFile(string File_Name);//reserved data
+	void Set_Path(vector<int> path);
 	class Algorithm_Floida
 	{
 	public:
-		Algorithm_Floida(int tops, int ribs, double** Adjacency_Array);
-		int tops;
+		Algorithm_Floida(int tops, int ribs, double** Adjacency_Array, int from, int to);
+		int tops=NULL;
 		int ribs;
 
-		int from=6;
-		int to=1;
-
+		int from=NULL;
+		int to=NULL;
+		vector<int> path;
 		double** Adjacency_Array;
 		double** Array_Of_Distance;//для Флойда
 		int** Array_Of_History;
@@ -52,7 +61,6 @@ private:
 
 		void Create_Arrays_of_Distance_History();
 		void Processing();//алгоритм Флойда
-		void Get_Array_of_Distance();
 		void Get_The_Shortest_Path();
 		void Set_Result_to_File();
 		~Algorithm_Floida();
@@ -61,27 +69,27 @@ private:
 	{
 
 	public:
-		Algorithm_Dantzig(int tops, int ribs, double** Adjacency_Array);
-		int tops;
-		int ribs;
+		Algorithm_Dantzig(int tops, int ribs, double** Adjacency_Array, int from, int to);
+		int tops=NULL;
+		int ribs=NULL;
 
-		int from = 1;
-		int to = 5;
-		
+		int from = NULL;
+		int to = NULL;
+		vector<int> path;
+
 		double** Adjacency_Array;
 		double*** Processing_Arrays;
 		double** Array_of_History;
-
+		
 		double summing_Dm_m_j(double*** data, int i, int j, int m);
 		double summing_Dm_i_m(double*** data, int i, int j, int m);
 		void Create_Processing_History_Arrays();
 		void Processing();
 		void Get_The_Shortest_Path();
-		void Get_Array_of_Distance();
 		void Set_Result_to_File();
 		~Algorithm_Dantzig();
 	};
 
 	Algorithm_Floida* Floid = nullptr;
-	Algorithm_Dantzig* Dantzig = nullptr;
+	Algorithm_Dantzig* Dantzig;
 };

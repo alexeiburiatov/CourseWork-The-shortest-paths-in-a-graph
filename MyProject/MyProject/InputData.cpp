@@ -58,6 +58,7 @@ System::Void MyProject::InputData::âåğíóòüñÿÂÃëàâíîåÌåíşToolStripMenuItem_Click(
 System::Void MyProject::InputData::âûéòèÈçÏğîãğàììûToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	ClearFile("reserved.txt");
+	remove("Important/picture.png");
 	Application::Exit();
 }
 

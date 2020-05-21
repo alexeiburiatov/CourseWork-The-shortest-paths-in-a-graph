@@ -21,8 +21,7 @@ string& Convert_String_to_string(String^ s)
 {
 	string os;
 	using namespace Runtime::InteropServices;
-	const char* chars =
-		(const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+	const char* chars =(const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
 	os = chars;
 	Marshal::FreeHGlobal(IntPtr((void*)chars));
 	return os;
@@ -40,3 +39,22 @@ void ClearFile(string Filename)
 	File.close();
 	remove("reserved.txt");
 }
+
+
+String^ Convert_num_to_String(int data)
+{
+	string num;
+	num = to_string(data);
+	return Convert_string_to_String(num);
+	// TODO: вставьте здесь оператор return
+}
+
+int Convert_String_to_num(String^ data)
+{
+	string num;
+	int n;
+	Convert_String_to_string(data, num);
+	n = atoi(num.c_str());
+	return n;
+}
+

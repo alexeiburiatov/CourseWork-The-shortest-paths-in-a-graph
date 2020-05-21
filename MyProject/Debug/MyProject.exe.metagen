@@ -3,6 +3,7 @@
   MyProject.InputData.resources - Embedded, ContainedInManifestFile, 
   MyProject.MyForm.resources - Embedded, ContainedInManifestFile, 
   MyProject.OutputData.resources - Embedded, ContainedInManifestFile, 
+  MyProject.PathGraph.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly MyProject, Version=0.0.*, Culture=Инвариантный язык (Инвариантная страна): 
 	hash=SHA1, flags=PublicKey
@@ -31,5 +32,8 @@ Class MyProject.OutputData: AutoLayout, AnsiClass, Class, Public, BeforeFieldIni
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class MyProject.Graph: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class MyProject.PathGraph: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

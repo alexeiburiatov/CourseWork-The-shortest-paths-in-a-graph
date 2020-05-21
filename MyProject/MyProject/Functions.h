@@ -11,3 +11,5 @@ String^ Convert_string_to_String(string& os, String^ s);// string â string^
 string& Convert_String_to_string(String^ s);// string^ â string
 String^ Convert_string_to_String(string& os);// string â string^
 void ClearFile(string Filename);
+String^ Convert_num_to_String(int data);
+int Convert_String_to_num(String^ data);

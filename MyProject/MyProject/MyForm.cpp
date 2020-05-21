@@ -34,12 +34,14 @@ System::Void MyProject::MyForm::button1_Click(System::Object^ sender, System::Ev
 System::Void MyProject::MyForm::button5_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	ClearFile("reserved.txt");
+	remove("Important/picture.png");
 	Application::Exit();
 }
 
 System::Void MyProject::MyForm::‚˚ıÓ‰ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	ClearFile("reserved.txt");
+	remove("Important/picture.png");
 	Application::Exit();
 }
 
