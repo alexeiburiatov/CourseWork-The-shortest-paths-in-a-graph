@@ -5,6 +5,7 @@
 #include<string>
 #include<iomanip>
 #include"Data.h"
+#include"Functions.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -93,7 +94,13 @@ void Data_::Set_Data_Array_By_Generating(int num)
 		{
 			if(i!=j)
 			{
-				this->Adjacency_Array[i][j] = rand() % 15 + 1;
+				int a = rand() % 4;
+				if (a == 0)
+				{
+					this->Adjacency_Array[i][j] = INF;
+					continue;
+				}
+				this->Adjacency_Array[i][j] = rand() % 15+1;
 				this->ribs++;
 			}
 			
@@ -165,22 +172,14 @@ void Data_::Show_Graph()
 
 void Data_::Show_Path()
 {
-	int iter;
 	ofstream File("Important/Path.dot");
 	File << "  digraph g{" << endl;
 	File << "    dpi=\"600\";" << endl;
 	File << "    rankdir=\"LR\";" << endl;
 	File <<"    node[shape=circle, group=main];"<< endl;
 
-	if (this->path.size() % 2 == 0)
-	{
-		iter = this->path.size()-1;
-	}
-	else
-	{
-		iter = this->path.size()-1;
-	}
-	for (int i = 0; i <iter; i++)
+
+	for (int i = 0; i <this->path_counter-1; i++)
 	{
 		File << "    " << this->path[i] << "->" << this->path[i+1] << " [label=\"" << Adjacency_Array[this->path[i]-1][this->path[i+1]-1] << "\"];" << endl;
 	}
@@ -189,33 +188,37 @@ void Data_::Show_Path()
 	remove("Important/Path.png");
 	system("dot -Tpng -o Important/Path.png Important/Path.dot");
 	SetPathToFile("Important/reserved_for_path.txt");
+	delete[] this->path;
 
 }
 
 
 void Data_::Get_The_Shortest_Path_Floida()
 {
-	//что за дичь
-//	this->path.push_back(5);
-	this->Floid = new Algorithm_Floida(this->tops, this->ribs, this->Adjacency_Array, this->from, this->to);
+	this->path = new int[this->tops]{};
+	this->path_counter = 0;
+	this->Floid = new Algorithm_Floida(this->tops, this->ribs, this->Adjacency_Array, this->from, this->to, this->path);
 	Floid->Create_Arrays_of_Distance_History();
 	Floid->Processing();
 	Floid->Get_The_Shortest_Path();
 	Floid->Set_Result_to_File();
-	this->Set_Path(Floid->path);
+	this->path_counter = Floid->counter;
+	this->iterFloida = Floid->iterFloida;
 	delete Floid;
+
 }
 
 void Data_::Get_The_Shortest_Path_Dantzig()
 {
-	this->path.clear();
-	this->path.push_back(5);
-	this->Dantzig = new Algorithm_Dantzig(this->tops, this->ribs, this->Adjacency_Array, this->from, this->to);
+	this->path = new int[this->tops]{};
+	this->path_counter = 0;
+	this->Dantzig = new Algorithm_Dantzig(this->tops, this->ribs, this->Adjacency_Array, this->from, this->to, this->path);
 	Dantzig->Create_Processing_History_Arrays();
 	Dantzig->Processing();
 	Dantzig->Get_The_Shortest_Path();
 	Dantzig->Set_Result_to_File();
-	this->Set_Path(Dantzig->path);
+	this->path_counter = Dantzig->counter;
+	this->iterDantzig = Dantzig->iterDantzig;
 	delete Dantzig;
 
 }
@@ -241,12 +244,8 @@ void Data_::SetPathToFile(string File_Name)
 	ofstream File(File_Name);
 	File << "=========Кратчайший путь от " << this->from << " к " << this->to <<" вершине=========="<< endl<<endl;
 	
-	int iter;
-	if (this->path.size() % 2 == 0)
-		iter = this->path.size()-1;
-	else
-		iter = this->path.size()-1;
-	for (int i = 0; i < iter; i++)
+
+	for (int i = 0; i < this->path_counter-1; i++)
 	{
 			File << this->path[i] << "—>"<<this->path[i+1]<<" = "<<this->Adjacency_Array[this->path[i]-1][this->path[i+1]-1]<<endl;
 	}
@@ -254,14 +253,8 @@ void Data_::SetPathToFile(string File_Name)
 
 }
 
-void Data_::Set_Path(vector<int> path)
-{
-	for (int i = 0; i < path.size(); i++)
-	{
-		this->path.push_back(path[i]);
-	}
 
-}
+
 
 Data_::~Data_()
 {
@@ -274,13 +267,14 @@ Data_::~Data_()
 
 
 
-Data_::Algorithm_Floida::Algorithm_Floida( int tops, int ribs, double** Adjacency_Array, int from, int to)
+Data_::Algorithm_Floida::Algorithm_Floida( int tops, int ribs, double** Adjacency_Array, int from, int to, int* path)
 {
 	this->tops = tops;
 	this->ribs = ribs;
 	this->Adjacency_Array = Adjacency_Array;
 	this->from = from;
 	this->to = to;
+	this->path = path;
 
 }
 
@@ -298,11 +292,20 @@ void Data_::Algorithm_Floida::Create_Arrays_of_Distance_History()
 	{
 		for (int j = 0; j < tops; j++)
 		{
-			this->Array_Of_Distance[i][j] = this->Adjacency_Array[i][j];
+			if (i == j) {
+
+				this->Array_Of_Distance[i][j] = INF;
+			}
+			else
+			{
+				this->Array_Of_Distance[i][j] = this->Adjacency_Array[i][j];
+			}
+
 			if (this->Array_Of_Distance[i][j] != INF) this->Array_Of_History[i][j] = j + 1;
 
 		}
 	}
+
 
 }
 
@@ -318,12 +321,15 @@ void Data_::Algorithm_Floida::Processing()
 
 	for (int i = 0; i < this->tops; i++)
 	{
+		this->iterFloida++;
 		for (int j = 0; j < this->tops; j++)
 		{
+			this->iterFloida++;
 			if (this->Array_Of_Distance[i][j] != INF)
 			{
 				for (int k = 0; k < this->tops; k++)
 				{
+					this->iterFloida++;
 					if (this->Array_Of_Distance[i][k] > this->Array_Of_Distance[i][j] + this->Array_Of_Distance[j][k])
 					{
 						this->Array_Of_Distance[i][k] = this->Array_Of_Distance[i][j] + this->Array_Of_Distance[j][k];
@@ -341,18 +347,19 @@ void Data_::Algorithm_Floida::Processing()
 
 void Data_::Algorithm_Floida::Get_The_Shortest_Path()
 {
-	this->path.push_back(this->from);
+	this->path[this->counter++] = this->from;
 	int k = Array_Of_History[this->from - 1][this->to - 1];
 	if (k != 0)
 	{
-		this->path.push_back(k);
+		this->path[this->counter++] = k;
 	}
+
 	while (k != 0)
 	{
 		k = Array_Of_History[k - 1][to - 1];
 		if (k != 0)
 		{
-			this->path.push_back(k);
+			this->path[this->counter++] = k;
 		}
 	}
 
@@ -390,13 +397,14 @@ Data_::Algorithm_Floida::~Algorithm_Floida()
 
 
 
-Data_::Algorithm_Dantzig::Algorithm_Dantzig(int tops, int ribs, double** Adjacency_Array, int from, int to)
+Data_::Algorithm_Dantzig::Algorithm_Dantzig(int tops, int ribs, double** Adjacency_Array, int from, int to, int* path)
 {
 	this->tops = tops;
 	this->ribs = ribs;
 	this->Adjacency_Array = Adjacency_Array;
 	this->from = from;
 	this->to = to;
+	this->path = path;
 }
 
 double Data_::Algorithm_Dantzig::summing_Dm_m_j(double*** data, int i, int j, int m)
@@ -431,6 +439,7 @@ void Data_::Algorithm_Dantzig::Create_Processing_History_Arrays()
 	}
 	for (int i = 0; i < tops; i++)
 	{
+		//!!!!!
 		for (size_t j = 0; j < tops; j++)
 		{
 			if (i!=j)Processing_Arrays[0][i][j] = Adjacency_Array[i][j];
@@ -460,6 +469,8 @@ void Data_::Algorithm_Dantzig::Create_Processing_History_Arrays()
 		}
 	}
 
+
+
 }
 
 void Data_::Algorithm_Dantzig::Processing()
@@ -468,10 +479,13 @@ void Data_::Algorithm_Dantzig::Processing()
 	int counter = 2;
 	for (int m = 2; m <= tops; m++)//layer
 	{
+		this->iterDantzig++;
 		for (int i = 0; i < counter; i++)//рядок
 		{
+			this->iterDantzig++;
 			for (int j = 0; j < counter; j++)//стовбець
 			{
+				this->iterDantzig++;
 				if (i == j)continue;//відстань до самої себе=0
 
 				if (m - 1 == i)//за формулою, якщо степінь матриці дорівнює рядку
@@ -480,6 +494,7 @@ void Data_::Algorithm_Dantzig::Processing()
 					int ptr;
 					for (int i1 = 0; i1 < m - 1; i1++)
 					{
+						this->iterDantzig++;
 						if (summing_Dm_m_j(Processing_Arrays, i1, j, m) < min)
 						{
 							ptr = i1;
@@ -496,6 +511,7 @@ void Data_::Algorithm_Dantzig::Processing()
 					int ptr;
 					for (int j1 = 0; j1 < m - 1; j1++)
 					{
+						this->iterDantzig++;
 						if (summing_Dm_i_m(Processing_Arrays, i, j1, m) < min)
 						{
 							ptr = j1;
@@ -512,8 +528,10 @@ void Data_::Algorithm_Dantzig::Processing()
 
 		for (int i = 0; i < counter; i++)//для всіх інших вершин, які не задовольняють попередні умови
 		{
+			this->iterDantzig++;
 			for (int j = 0; j < counter; j++)
 			{
+				this->iterDantzig++;
 				if (i != j && m - 1 != j && m - 1 != i)
 				{
 
@@ -535,18 +553,18 @@ void Data_::Algorithm_Dantzig::Processing()
 
 void Data_::Algorithm_Dantzig::Get_The_Shortest_Path()
 {
-	this->path.push_back(this->from);
+	this->path[this->counter++] = this->from;
 	int k = Array_of_History[from - 1][to - 1];
 	if (k != 0)
 	{
-		this->path.push_back(k);
+		this->path[this->counter++] = k;
 	}
 	while (k != 0)
 	{
 		k = Array_of_History[k - 1][to - 1];
 		if (k != 0)
 		{
-			this->path.push_back(k);
+			this->path[this->counter++] = k;
 		}
 	}
 }

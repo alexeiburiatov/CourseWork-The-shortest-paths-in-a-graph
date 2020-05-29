@@ -6,6 +6,7 @@
 #include"Graph.h"
 #include"PathGraph.h"
 #include <iostream>
+#include<sstream>
 
 using namespace System::Drawing;
 Data_ procession;
@@ -51,7 +52,6 @@ System::Void MyProject::DataForm::ввестиВручнуюToolStripMenuItem_Click(System::O
 	Head();
 
 	dataGridView1->AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode::AutoSizeToAllHeaders);
-	dataGridView1->AutoResizeColumns();
 	return System::Void();
 
 }
@@ -68,8 +68,9 @@ System::Void MyProject::DataForm::сохранитьВПрограммуToolStripMenuItem_Click(Sys
 	procession.~Data_();
 	procession.Create_Arrays();
 	string inf = "INF";
+	double check;
 	String^ inputed_INF = Convert_string_to_String(inf);
-
+	string data;
 
 	for (int i = 0; i < procession.tops; i++)
 	{
@@ -85,8 +86,24 @@ System::Void MyProject::DataForm::сохранитьВПрограммуToolStripMenuItem_Click(Sys
 			{
 				if (i != j)
 				{
+					check = Convert_String_to_num(dataGridView1->Rows[i]->Cells[j]->Value->ToString());
+					if (check > 100)
+					{
+						MessageBox::Show("Слишком большой вес. Проверьте данные!", "Внимание!");
+						return;
+					}
+					else if (check < -100)
+					{
+						MessageBox::Show("Слишком маленький вес. Проверьте данные!", "Внимание!");
+						return;
+					}
+						
 					procession.ribs++;
-					procession.Adjacency_Array[i][j] = Convert::ToInt32(dataGridView1->Rows[i]->Cells[j]->Value);
+					data = "";
+					Convert_String_to_string(dataGridView1->Rows[i]->Cells[j]->Value->ToString(), data);
+					std::stringstream ss(data);
+					ss >> procession.Adjacency_Array[i][j];
+					ss.clear();
 				}
 				else
 				{
@@ -96,7 +113,7 @@ System::Void MyProject::DataForm::сохранитьВПрограммуToolStripMenuItem_Click(Sys
 
 		}
 	}
-	procession.Set_Data_To_File("reserved.txt");
+	procession.Set_Data_To_File("Important/reserved.txt");
 	return System::Void();
 }
 
@@ -115,13 +132,13 @@ System::Void MyProject::DataForm::удалитьДанныеToolStripMenuItem_Click(System::O
 System::Void MyProject::DataForm::вернутьсяВГлавноеМенюToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	MyForm^ form = gcnew MyForm();
-	//this->Hide();
+	this->Hide();
 	form->Show();
 }
 
 System::Void MyProject::DataForm::выйтиИзПрограммыToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	ClearFile("reserved.txt");
+	ClearFile("Important/reserved.txt");
 	remove("Important/picture.png");
 	Application::Exit();
 }
@@ -139,14 +156,14 @@ System::Void MyProject::DataForm::DataForm_Load(System::Object^ sender, System::
 System::Void MyProject::DataForm::считатьСФайлаToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	InputData^ form = gcnew InputData();
-	//this->Hide();
+	this->Hide();
 	form->Show();
 	
 }
 
 System::Void MyProject::DataForm::DataForm_Shown(System::Object^ sender, System::EventArgs^ e)
 {
-	procession.Set_Data_Adjacency_Array_From_File("reserved.txt");
+	procession.Set_Data_Adjacency_Array_From_File("Important/reserved.txt");
 
 	return System::Void();
 }
@@ -216,6 +233,7 @@ System::Void MyProject::DataForm::pathTo_TextChanged(System::Object^ sender, Sys
 
 System::Void MyProject::DataForm::AlgorithmFloida_Click(System::Object^ sender, System::EventArgs^ e)
 {
+	FloidIter->Text = "";
 	if (pathFrom->Text->ToString()==""|| pathTo->Text->ToString() == "")
 	{
 		MessageBox::Show("Вы не ввели данные", "Внимание!");
@@ -234,13 +252,14 @@ System::Void MyProject::DataForm::AlgorithmFloida_Click(System::Object^ sender, 
 			procession.Set_Top_From(Convert::ToInt32(pathFrom->Text->ToString()));
 			procession.Set_Top_To(Convert::ToInt32(pathTo->Text->ToString()));
 			procession.Get_The_Shortest_Path_Floida();
-			if (procession.path.size() == 1)
+			if (procession.Get_Path_Counter() == 1)
 			{
 				MessageBox::Show("Путь не найден", "Внимание!");
 				return;
 			}
 			else
 			{
+				FloidIter->Text = Convert_num_to_String(procession.Get_Iter_Floida());
 				remove("Important/Path.png");
 				procession.Show_Path();
 				PathGraph^ form = gcnew PathGraph();
@@ -257,6 +276,7 @@ System::Void MyProject::DataForm::AlgorithmFloida_Click(System::Object^ sender, 
 
 System::Void MyProject::DataForm::AlgorithmDantzig_Click(System::Object^ sender, System::EventArgs^ e)
 {
+	DantzigIter->Text = "";
 	if (pathFrom->Text->ToString() == "" || pathTo->Text->ToString() == "")
 	{
 		MessageBox::Show("Вы не ввели данные", "Внимание!");
@@ -275,13 +295,14 @@ System::Void MyProject::DataForm::AlgorithmDantzig_Click(System::Object^ sender,
 			procession.Set_Top_From(Convert::ToInt32(pathFrom->Text->ToString()));
 			procession.Set_Top_To(Convert::ToInt32(pathTo->Text->ToString()));
 			procession.Get_The_Shortest_Path_Dantzig();
-			if (procession.path.size() == 1)
+			if (procession.Get_Path_Counter() == 1)
 			{
 				MessageBox::Show("Путь не найден", "Внимание!");
 				return;
 			}
 			else
 			{
+				DantzigIter->Text = Convert_num_to_String(procession.Get_Iter_Dantzig());
 				remove("Important/Path.png");
 				procession.Show_Path();
 				PathGraph^ form = gcnew PathGraph();
@@ -295,12 +316,22 @@ System::Void MyProject::DataForm::AlgorithmDantzig_Click(System::Object^ sender,
 
 System::Void MyProject::DataForm::визуализироватьToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	remove("Important/picture.png");
-	procession.Show_Graph();
-	Graph^ form = gcnew Graph();
-	//this->Hide();
-	form->Show();
-	return System::Void();
+	if (procession.tops>10)
+	{
+		MessageBox::Show("Вершин больше 10. Визуализировать невозможно", "Внимание!");
+		return;
+	}
+	else
+	{
+		remove("Important/picture.png");
+		procession.Show_Graph();
+		Graph^ form = gcnew Graph();
+		//this->Hide();
+		form->Show();
+		return System::Void();
+
+	}
+
 }
 
 System::Void MyProject::DataForm::вывестиТаблицуToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
@@ -326,5 +357,16 @@ System::Void MyProject::DataForm::вывестиТаблицуToolStripMenuItem_Click(System::
 	dataGridView1->ReadOnly = true;
 
 
+	return System::Void();
+}
+
+System::Void MyProject::DataForm::FloidIter_TextChanged(System::Object^ sender, System::EventArgs^ e)
+{
+	
+	return System::Void();
+}
+
+System::Void MyProject::DataForm::DantzigIter_TextChanged(System::Object^ sender, System::EventArgs^ e)
+{
 	return System::Void();
 }

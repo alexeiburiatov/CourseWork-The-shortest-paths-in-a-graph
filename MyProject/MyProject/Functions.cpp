@@ -49,6 +49,14 @@ String^ Convert_num_to_String(int data)
 	// TODO: вставьте здесь оператор return
 }
 
+String^ Convert_num_to_String(double data)
+{
+	string num;
+	num = to_string((int)data);
+	return Convert_string_to_String(num);
+	// TODO: вставьте здесь оператор return
+}
+
 int Convert_String_to_num(String^ data)
 {
 	string num;

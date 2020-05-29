@@ -39,6 +39,8 @@ namespace MyProject {
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^ âåðíóòüñÿÊÏîèñêóToolStripMenuItem;
 	private: System::Windows::Forms::Button^ SavePath;
+
+
 	protected:
 
 	private:
@@ -66,9 +68,10 @@ namespace MyProject {
 			// pictureBox1
 			// 
 			this->pictureBox1->BackColor = System::Drawing::Color::White;
-			this->pictureBox1->Location = System::Drawing::Point(12, 64);
+			this->pictureBox1->Location = System::Drawing::Point(16, 79);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(709, 365);
+			this->pictureBox1->Size = System::Drawing::Size(945, 449);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox1->TabIndex = 11;
 			this->pictureBox1->TabStop = false;
@@ -77,10 +80,10 @@ namespace MyProject {
 			// ShowGraph
 			// 
 			this->ShowGraph->Font = (gcnew System::Drawing::Font(L"Courier New", 12));
-			this->ShowGraph->Location = System::Drawing::Point(144, 26);
-			this->ShowGraph->Margin = System::Windows::Forms::Padding(2);
+			this->ShowGraph->Location = System::Drawing::Point(192, 32);
+			this->ShowGraph->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->ShowGraph->Name = L"ShowGraph";
-			this->ShowGraph->Size = System::Drawing::Size(153, 33);
+			this->ShowGraph->Size = System::Drawing::Size(204, 41);
 			this->ShowGraph->TabIndex = 12;
 			this->ShowGraph->Text = L"Îòîáðàçèòü ïóòü";
 			this->ShowGraph->UseVisualStyleBackColor = true;
@@ -88,27 +91,29 @@ namespace MyProject {
 			// 
 			// menuStrip1
 			// 
+			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->âåðíóòüñÿÊÏîèñêóToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(733, 24);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(8, 2, 0, 2);
+			this->menuStrip1->Size = System::Drawing::Size(975, 28);
 			this->menuStrip1->TabIndex = 13;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
 			// âåðíóòüñÿÊÏîèñêóToolStripMenuItem
 			// 
 			this->âåðíóòüñÿÊÏîèñêóToolStripMenuItem->Name = L"âåðíóòüñÿÊÏîèñêóToolStripMenuItem";
-			this->âåðíóòüñÿÊÏîèñêóToolStripMenuItem->Size = System::Drawing::Size(126, 20);
+			this->âåðíóòüñÿÊÏîèñêóToolStripMenuItem->Size = System::Drawing::Size(157, 24);
 			this->âåðíóòüñÿÊÏîèñêóToolStripMenuItem->Text = L"Âåðíóòüñÿ ê ïîèñêó";
 			this->âåðíóòüñÿÊÏîèñêóToolStripMenuItem->Click += gcnew System::EventHandler(this, &PathGraph::âåðíóòüñÿÊÏîèñêóToolStripMenuItem_Click);
 			// 
 			// SavePath
 			// 
 			this->SavePath->Font = (gcnew System::Drawing::Font(L"Courier New", 12));
-			this->SavePath->Location = System::Drawing::Point(392, 26);
-			this->SavePath->Margin = System::Windows::Forms::Padding(2);
+			this->SavePath->Location = System::Drawing::Point(523, 32);
+			this->SavePath->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->SavePath->Name = L"SavePath";
-			this->SavePath->Size = System::Drawing::Size(153, 33);
+			this->SavePath->Size = System::Drawing::Size(204, 41);
 			this->SavePath->TabIndex = 14;
 			this->SavePath->Text = L"Ñîõðàíèòü ïóòü";
 			this->SavePath->UseVisualStyleBackColor = true;
@@ -116,18 +121,19 @@ namespace MyProject {
 			// 
 			// PathGraph
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
-			this->ClientSize = System::Drawing::Size(733, 441);
+			this->ClientSize = System::Drawing::Size(975, 533);
 			this->Controls->Add(this->SavePath);
 			this->Controls->Add(this->ShowGraph);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->MaximizeBox = false;
-			this->MaximumSize = System::Drawing::Size(749, 480);
-			this->MinimumSize = System::Drawing::Size(749, 480);
+			this->MaximumSize = System::Drawing::Size(993, 580);
+			this->MinimumSize = System::Drawing::Size(993, 580);
 			this->Name = L"PathGraph";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"PathGraph";

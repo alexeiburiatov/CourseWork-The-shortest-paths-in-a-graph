@@ -30,8 +30,10 @@ System::Void MyProject::Graph::pictureBox1_Click(System::Object^ sender, System:
 System::Void MyProject::Graph::ВернутьсяКПоиску_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	delete pictureBox1->Image;
+	delete Image::FromFile("Important/picture.png");
+	
 	remove("Important/picture.png");
-	//this->Hide();
+	this->Hide();
 	return System::Void();
 	
 }

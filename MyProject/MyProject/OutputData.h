@@ -45,6 +45,7 @@ namespace MyProject {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::TextBox^ textBoxSavePath;
 	private: System::Windows::Forms::Button^ buttonSavePath;
+	private: System::Windows::Forms::ToolStripMenuItem^ çàêðûòüToolStripMenuItem;
 	private: System::ComponentModel::IContainer^ components;
 
 	protected:
@@ -70,10 +71,11 @@ namespace MyProject {
 			this->îáÏðîãðàììåToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->textBoxSavePath = (gcnew System::Windows::Forms::TextBox());
 			this->buttonSavePath = (gcnew System::Windows::Forms::Button());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->çàêðûòüToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
@@ -87,39 +89,39 @@ namespace MyProject {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(471, 24);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(5, 2, 0, 2);
+			this->menuStrip1->Size = System::Drawing::Size(625, 28);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
 			// âûõîäToolStripMenuItem
 			// 
-			this->âûõîäToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+			this->âûõîäToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->âåðíóòüñÿÂÃëàâíîåÌåíþToolStripMenuItem,
-					this->âûéòèÈçÏðîãðàììûToolStripMenuItem
+					this->âûéòèÈçÏðîãðàììûToolStripMenuItem, this->çàêðûòüToolStripMenuItem
 			});
 			this->âûõîäToolStripMenuItem->Name = L"âûõîäToolStripMenuItem";
-			this->âûõîäToolStripMenuItem->Size = System::Drawing::Size(54, 20);
+			this->âûõîäToolStripMenuItem->Size = System::Drawing::Size(67, 24);
 			this->âûõîäToolStripMenuItem->Text = L"Âûõîä";
 			// 
 			// âåðíóòüñÿÂÃëàâíîåÌåíþToolStripMenuItem
 			// 
 			this->âåðíóòüñÿÂÃëàâíîåÌåíþToolStripMenuItem->Name = L"âåðíóòüñÿÂÃëàâíîåÌåíþToolStripMenuItem";
-			this->âåðíóòüñÿÂÃëàâíîåÌåíþToolStripMenuItem->Size = System::Drawing::Size(221, 22);
+			this->âåðíóòüñÿÂÃëàâíîåÌåíþToolStripMenuItem->Size = System::Drawing::Size(279, 26);
 			this->âåðíóòüñÿÂÃëàâíîåÌåíþToolStripMenuItem->Text = L"Âåðíóòüñÿ â ãëàâíîå ìåíþ";
 			this->âåðíóòüñÿÂÃëàâíîåÌåíþToolStripMenuItem->Click += gcnew System::EventHandler(this, &OutputData::âåðíóòüñÿÂÃëàâíîåÌåíþToolStripMenuItem_Click);
 			// 
 			// âûéòèÈçÏðîãðàììûToolStripMenuItem
 			// 
 			this->âûéòèÈçÏðîãðàììûToolStripMenuItem->Name = L"âûéòèÈçÏðîãðàììûToolStripMenuItem";
-			this->âûéòèÈçÏðîãðàììûToolStripMenuItem->Size = System::Drawing::Size(221, 22);
+			this->âûéòèÈçÏðîãðàììûToolStripMenuItem->Size = System::Drawing::Size(279, 26);
 			this->âûéòèÈçÏðîãðàììûToolStripMenuItem->Text = L"Âûéòè èç ïðîãðàììû";
 			this->âûéòèÈçÏðîãðàììûToolStripMenuItem->Click += gcnew System::EventHandler(this, &OutputData::âûéòèÈçÏðîãðàììûToolStripMenuItem_Click);
 			// 
 			// îáÏðîãðàììåToolStripMenuItem
 			// 
 			this->îáÏðîãðàììåToolStripMenuItem->Name = L"îáÏðîãðàììåToolStripMenuItem";
-			this->îáÏðîãðàììåToolStripMenuItem->Size = System::Drawing::Size(101, 20);
+			this->îáÏðîãðàììåToolStripMenuItem->Size = System::Drawing::Size(127, 24);
 			this->îáÏðîãðàììåToolStripMenuItem->Text = L"Îá ïðîãðàììå";
 			this->îáÏðîãðàììåToolStripMenuItem->Click += gcnew System::EventHandler(this, &OutputData::îáÏðîãðàììåToolStripMenuItem_Click);
 			// 
@@ -135,73 +137,80 @@ namespace MyProject {
 			this->groupBox1->Controls->Add(this->buttonSavePath);
 			this->groupBox1->Controls->Add(this->textBox1);
 			this->groupBox1->Controls->Add(this->button1);
-			this->groupBox1->Location = System::Drawing::Point(0, 25);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox1->Location = System::Drawing::Point(0, 31);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
-			this->groupBox1->Size = System::Drawing::Size(470, 132);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->groupBox1->Size = System::Drawing::Size(627, 162);
 			this->groupBox1->TabIndex = 2;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Ñîõðàíèòü äàííûå â ôàéë";
-			// 
-			// textBox1
-			// 
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->textBox1->Location = System::Drawing::Point(244, 28);
-			this->textBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(163, 26);
-			this->textBox1->TabIndex = 4;
-			this->textBox1->TextChanged += gcnew System::EventHandler(this, &OutputData::textBox1_TextChanged);
-			// 
-			// button1
-			// 
-			this->button1->Font = (gcnew System::Drawing::Font(L"Courier New", 12));
-			this->button1->Location = System::Drawing::Point(11, 17);
-			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(162, 46);
-			this->button1->TabIndex = 3;
-			this->button1->Text = L"Ñîõðàíèòü äàííûå";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &OutputData::button1_Click);
 			// 
 			// textBoxSavePath
 			// 
 			this->textBoxSavePath->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->textBoxSavePath->Location = System::Drawing::Point(244, 88);
-			this->textBoxSavePath->Margin = System::Windows::Forms::Padding(2);
+			this->textBoxSavePath->Location = System::Drawing::Point(325, 108);
+			this->textBoxSavePath->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBoxSavePath->Name = L"textBoxSavePath";
-			this->textBoxSavePath->Size = System::Drawing::Size(163, 26);
+			this->textBoxSavePath->Size = System::Drawing::Size(216, 30);
 			this->textBoxSavePath->TabIndex = 6;
 			this->textBoxSavePath->TextChanged += gcnew System::EventHandler(this, &OutputData::textBoxSavePath_TextChanged);
 			// 
 			// buttonSavePath
 			// 
 			this->buttonSavePath->Font = (gcnew System::Drawing::Font(L"Courier New", 12));
-			this->buttonSavePath->Location = System::Drawing::Point(11, 78);
-			this->buttonSavePath->Margin = System::Windows::Forms::Padding(2);
+			this->buttonSavePath->Location = System::Drawing::Point(15, 96);
+			this->buttonSavePath->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->buttonSavePath->Name = L"buttonSavePath";
-			this->buttonSavePath->Size = System::Drawing::Size(162, 45);
+			this->buttonSavePath->Size = System::Drawing::Size(216, 55);
 			this->buttonSavePath->TabIndex = 5;
 			this->buttonSavePath->Text = L"Ñîõðàíèòü ïóòü";
 			this->buttonSavePath->UseVisualStyleBackColor = true;
 			this->buttonSavePath->Click += gcnew System::EventHandler(this, &OutputData::buttonSavePath_Click);
 			// 
+			// textBox1
+			// 
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->textBox1->Location = System::Drawing::Point(325, 34);
+			this->textBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(216, 30);
+			this->textBox1->TabIndex = 4;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &OutputData::textBox1_TextChanged);
+			// 
+			// button1
+			// 
+			this->button1->Font = (gcnew System::Drawing::Font(L"Courier New", 12));
+			this->button1->Location = System::Drawing::Point(15, 21);
+			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(216, 57);
+			this->button1->TabIndex = 3;
+			this->button1->Text = L"Ñîõðàíèòü äàííûå";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &OutputData::button1_Click);
+			// 
+			// çàêðûòüToolStripMenuItem
+			// 
+			this->çàêðûòüToolStripMenuItem->Name = L"çàêðûòüToolStripMenuItem";
+			this->çàêðûòüToolStripMenuItem->Size = System::Drawing::Size(279, 26);
+			this->çàêðûòüToolStripMenuItem->Text = L"Çàêðûòü";
+			this->çàêðûòüToolStripMenuItem->Click += gcnew System::EventHandler(this, &OutputData::çàêðûòüToolStripMenuItem_Click);
+			// 
 			// OutputData
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(471, 162);
+			this->ClientSize = System::Drawing::Size(625, 190);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->MaximizeBox = false;
-			this->MaximumSize = System::Drawing::Size(487, 201);
-			this->MinimumSize = System::Drawing::Size(487, 201);
+			this->MaximumSize = System::Drawing::Size(643, 237);
+			this->MinimumSize = System::Drawing::Size(643, 237);
 			this->Name = L"OutputData";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"OutputData";
@@ -221,5 +230,6 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e);
 private: System::Void buttonSavePath_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void textBoxSavePath_TextChanged(System::Object^ sender, System::EventArgs^ e);
+private: System::Void çàêðûòüToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

@@ -23,11 +23,11 @@ System::Void MyProject::InputData::button2_Click(System::Object^ sender, System:
 		Data_ temp;
 		temp.Set_Data_Array_From_File(filename);
 		MessageBox::Show("Äàííûå ñ÷èòàíû", "Âíèìàíèå!");
-		temp.Set_Data_To_File("reserved.txt");
+		temp.Set_Data_To_File("Important/reserved.txt");
 		if (MessageBox::Show("Ïåðåéòè â ôîðìó äëÿ ðàáîòû ñ äàííûìè?", "Âíèìàíèå!", MessageBoxButtons::YesNo) != System::Windows::Forms::DialogResult::No)
 		{
 			DataForm^ form = gcnew DataForm();
-			//this->Hide();
+			this->Hide();
 			form->Show();
 		}
 		//return;
@@ -51,13 +51,13 @@ System::Void MyProject::InputData::groupBox1_Enter(System::Object^ sender, Syste
 System::Void MyProject::InputData::âåðíóòüñÿÂÃëàâíîåÌåíþToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	MyForm^ form = gcnew MyForm();
-	//this->Hide();
+	this->Hide();
 	form->Show();
 }
 
 System::Void MyProject::InputData::âûéòèÈçÏðîãðàììûToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	ClearFile("reserved.txt");
+	ClearFile("Important/reserved.txt");
 	remove("Important/picture.png");
 	Application::Exit();
 }
@@ -76,7 +76,7 @@ System::Void MyProject::InputData::buttonWritingDataOnYourOwn_Click(System::Obje
 System::Void MyProject::InputData::buttonWritingData_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	DataForm^ form = gcnew DataForm();
-	//this->Hide();
+	this->Hide();
 	form->Show();
 }
 

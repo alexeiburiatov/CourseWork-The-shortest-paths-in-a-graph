@@ -17,7 +17,7 @@ System::Void MyProject::PathGraph::âåðíóòüñÿÊÏîèñêóToolStripMenuItem_Click(Syste
 {
 	delete pictureBox1->Image;
 	remove("Important/Path.png");
-	//this->Hide();
+	this->Hide();
 	return System::Void();
 
 }
