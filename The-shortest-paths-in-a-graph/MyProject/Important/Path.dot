@@ -1,0 +1,7 @@
+  digraph g{
+    dpi="600";
+    rankdir="LR";
+    node[shape=circle, group=main];
+    3->5 [label="3"];
+    5->2 [label="9"];
+  }

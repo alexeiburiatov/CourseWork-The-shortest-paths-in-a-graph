@@ -1,9 +1,0 @@
-  digraph g{
-    dpi="600";
-    rankdir="LR";
-    splines="line";
-    1 [shape="circle"label="1"];
-    2 [shape="circle"label="2"];
-    1->2 [weight=1000 label="15"];
-    2->1 [weight=1000 label="14"];
-  }
